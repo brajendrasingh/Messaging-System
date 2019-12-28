@@ -18,14 +18,14 @@ import org.springframework.context.annotation.Configuration;
 public class ProducerConfiguration {
 
 	@Bean
-	public Jackson2JsonMessageConverter jsonMessageConverter() {
+	public Jackson2JsonMessageConverter object2JsonConverter() {
 		return new Jackson2JsonMessageConverter();
 	}
 
 	@Bean
 	public RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory) {
 		final RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory);
-		rabbitTemplate.setMessageConverter(jsonMessageConverter());
+		rabbitTemplate.setMessageConverter(object2JsonConverter());
 		return rabbitTemplate;
 	}
 }

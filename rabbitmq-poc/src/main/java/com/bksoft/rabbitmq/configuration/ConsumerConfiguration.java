@@ -48,14 +48,14 @@ public class ConsumerConfiguration implements RabbitListenerConfigurer {
 	}
 
 	@Bean
-	public MappingJackson2MessageConverter jsonMessageConverter() {
+	public MappingJackson2MessageConverter fromJson2ObjectConverter() {
 		return new MappingJackson2MessageConverter();
 	}
 
 	@Bean
 	public DefaultMessageHandlerMethodFactory rabbitHandlerMethodFactory() {
 		DefaultMessageHandlerMethodFactory factory = new DefaultMessageHandlerMethodFactory();
-		factory.setMessageConverter(jsonMessageConverter());
+		factory.setMessageConverter(fromJson2ObjectConverter());
 		return factory;
 	}
 
